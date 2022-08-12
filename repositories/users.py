@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import List, Optional
-from db.users import users
+from .base import BaseRepository
+from core.security import hash_password
 from models.users import User, UserIn
-from base import BaseRepository
-from core.security import hash_password, verify_password
+from db.users import users
 
 
 class UserRepository(BaseRepository):
@@ -47,7 +47,7 @@ class UserRepository(BaseRepository):
         values = {**user.dict()}
         values.pop("created_at", None)
         values.pop("id", None)
-        query = users.update().where(users.c.id==id).values(**values)
+        query = users.update().where(users.c.id == id).values(**values)
         await self.db.execute(query)
         return user
 
