@@ -130,3 +130,6 @@ dmypy.json
 
 # IDE's folders
 .idea/
+
+# DB's data folder
+data
