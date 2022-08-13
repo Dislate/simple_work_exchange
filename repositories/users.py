@@ -13,8 +13,8 @@ class UserRepository(BaseRepository):
         return await self.db.fetch_all(query=query)
 
     async def get_by_id(self, id: int) -> Optional[User]:
-        query = users.select().where(users.c.id == id).first()
-        user = await self.db.select().fetch_one(query)
+        query = users.select().where(users.c.id == id)
+        user = await self.db.fetch_one(query)
         if user is None:
             return None
         return User.parse_obj(user)
