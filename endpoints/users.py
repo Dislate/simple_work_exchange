@@ -21,4 +21,12 @@ async def create_user(
         users: UserRepository = Depends(get_user_repository)):
     return await users.create(u=user)
 
-# TODO: add update's, read_by_id's, delete's routes
+
+@router.put("/", response_model=User)
+async def update_user(
+        id: int,
+        user: UserIn,
+        users: UserRepository = Depends(get_user_repository)):
+    return await users.update(id=id, u=user)
+
+# TODO: add read_by_id's, delete's routes
