@@ -1,6 +1,6 @@
+import datetime
 import sqlalchemy
 from .base import metadata
-import datetime
 
 jobs = sqlalchemy.Table(
     "jobs",
