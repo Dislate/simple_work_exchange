@@ -1,8 +1,9 @@
 import datetime
+from typing import Optional
 from pydantic import BaseModel
 
 
-class JobBase(BaseModel):
+class BaseJob(BaseModel):
     title: str
     description: str
     salary_from: int
@@ -10,12 +11,12 @@ class JobBase(BaseModel):
     is_active: bool = True
 
 
-class Job(JobBase):
-    id: int
+class Job(BaseJob):
+    id: Optional[int] = None
     user_id: int
-    created_at: datetime.datetime
+    created_at: Optional[datetime.datetime]
     updated_at: datetime.datetime
 
 
-class JobIn(JobBase):
+class JobIn(BaseJob):
     pass
